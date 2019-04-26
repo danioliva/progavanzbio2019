@@ -1,29 +1,66 @@
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class FactorialTest {
+    private static final double EPSILON = 0.00000000000001;
+    Factorial factorial;
 
-    @Test
-    public void shouldFactorialOfZeroReturnOne(){
-        int expectedResult=1;
+    @Before
+    public void setup() {
+        factorial = new Factorial();
+    }
 
-        Factorial factorial=new Factorial();
-
-        int obtainedResult=factorial.compute(0);
-
-        assertEquals(expectedResult, obtainedResult);
+    @After
+    public void after() {
+        factorial = null;
     }
 
     @Test
-    public void shouldFactorialOfOneReturnOne(){
-        int expectedResult=1;
+    public void shouldFactorialOfZeroReturnOne() {
+        double expectedResult = 1;
 
-        Factorial factorial=new Factorial();
+        double obtainedResult = factorial.compute(0);
 
-        int obtainedResult=factorial.compute(1);
-
-        assertEquals(expectedResult, obtainedResult);
+        assertEquals(expectedResult, obtainedResult, EPSILON);
     }
+
+    @Test
+    public void shouldFactorialOfOneReturnOne() {
+        double expectedResult = 1;
+
+        double obtainedResult = factorial.compute(1);
+
+        assertEquals(expectedResult, obtainedResult, EPSILON);
+    }
+
+
+    @Test
+    public void shouldFactorialOfTwoReturnTwo() {
+        double expectedResult = 2;
+
+        double obtainedResult = factorial.compute(2);
+
+        assertEquals(expectedResult, obtainedResult, EPSILON);
+    }
+
+
+    @Test
+    public void shouldFactorialOfThreeReturnSix() {
+        double expectedResult = 6;
+
+        double obtainedResult = factorial.compute(3);
+
+        assertEquals(expectedResult, obtainedResult, EPSILON);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldFactorialThrowsAnExceptionIfTheValueIsNegative() {
+        factorial.compute(-2);
+
+    }
+
 
 }
