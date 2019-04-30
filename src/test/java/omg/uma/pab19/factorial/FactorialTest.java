@@ -1,3 +1,6 @@
+package omg.uma.pab19.factorial;
+
+import omg.uma.pab19.factorial.Factorial;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,5 +1,12 @@
+package omg.uma.pab19.factorial;
+
 public class Factorial {
 
+
+    /**
+    *
+     *
+    */
 
     public double compute(int number) {
         double result;
