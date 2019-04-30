@@ -30,4 +30,17 @@ public class PurchaseOrderTest {
 
         verify(store,never()).removeProducts("Beer",6);
     }
+
+    @Test
+    public void a(){
+        Store store= mock(Store.class);
+        when(store.areThereEnoughProducts("Milk",20)).thenReturn(true,false);
+
+        PurchaseOrder purchaseOrder=new PurchaseOrder("Milk",20);
+        purchaseOrder.buy(store);
+        purchaseOrder.buy(store);
+
+        verify(store, times(2)).areThereEnoughProducts("Milk",20);
+        verify(store,times(1)).removeProducts("Milk",20);
+    }
 }
